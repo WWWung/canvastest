@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin: 0;
+			}
+			#canvas{
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="600px" height="300px"></canvas>
+		<button id="btn1">按钮1</button>
+		<button id="btn2">按钮2</button>
+		<script>
+			var ctx = canvas.getContext('2d');
+			console.log(ctx)
+			btn1.onclick = function(){
+				a();
+				canvas.onmousemove = function(e){
+					ctx.clearRect(0,0,600,300);
+					a();
+					var x = e.pageX,y = e.pageY;
+					ctx.beginPath();
+					ctx.moveTo(10,10);
+					ctx.lineTo(x,y);
+					ctx.moveTo(210,210);
+					ctx.lineTo(x,y);
+					ctx.moveTo(10,210);
+					ctx.lineTo(x,y);
+					ctx.moveTo(210,10);
+					ctx.lineTo(x,y);
+					ctx.stroke();
+					ctx.closePath();
+				}
+				function a(){
+					ctx.beginPath();
+					ctx.moveTo(10,10);
+					ctx.lineTo(210,10);
+					ctx.lineTo(210,210);
+					ctx.lineTo(10,210);
+					ctx.lineTo(10,10);
+					ctx.stroke();
+					ctx.closePath();
+				}
+			}
+		</script>
+	</body>
+</html>
